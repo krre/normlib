@@ -32,3 +32,13 @@ pub fn build() -> std::io::Result<()> {
 
     Ok(())
 }
+
+pub fn run() -> std::io::Result<()> {
+    if let Ok(res) = fs::exists(APP_FILE)
+        && res
+    {
+        println!("Application runned...");
+    }
+
+    Ok(())
+}
