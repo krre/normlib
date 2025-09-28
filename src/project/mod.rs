@@ -22,3 +22,13 @@ pub fn create(name: &str, target: Target) -> std::io::Result<()> {
 
     Ok(())
 }
+
+pub fn build() -> std::io::Result<()> {
+    let build_dir = "build";
+
+    if !fs::exists(build_dir)? {
+        fs::create_dir(build_dir)?;
+    }
+
+    Ok(())
+}
