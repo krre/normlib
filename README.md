@@ -1,2 +1,2 @@
-# normlib
-Common lib for Norm tools
+# Normlib
+Common lib for Norm tools.
