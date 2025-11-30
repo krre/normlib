@@ -3,6 +3,8 @@ use std::fs;
 pub const APP_FILE: &'static str = "app.norm";
 pub const LIB_FILE: &'static str = "lib.norm";
 
+pub const BUILD_DIR: &'static str = "build";
+
 pub enum Target {
     Application,
     Library,
@@ -24,10 +26,8 @@ pub fn create(name: &str, target: Target) -> std::io::Result<()> {
 }
 
 pub fn build() -> std::io::Result<()> {
-    let build_dir = "build";
-
-    if !fs::exists(build_dir)? {
-        fs::create_dir(build_dir)?;
+    if !fs::exists(BUILD_DIR)? {
+        fs::create_dir(BUILD_DIR)?;
     }
 
     Ok(())
