@@ -1,8 +1,5 @@
 use std::fs;
 
-pub const APP_FILE: &'static str = "app.norm";
-pub const LIB_FILE: &'static str = "lib.norm";
-
 pub const BUILD_DIR: &'static str = "build";
 
 pub enum Target {
@@ -11,14 +8,14 @@ pub enum Target {
 }
 
 pub fn create(name: &str, target: Target) -> std::io::Result<()> {
-    fs::create_dir(name)?;
+    let file_name = String::from(name) + ".norm";
 
     match target {
         Target::Application => {
-            fs::write(String::from(name) + "/" + APP_FILE, "@app")?;
+            fs::write(file_name, "@app")?;
         }
         Target::Library => {
-            fs::write(String::from(name) + "/" + LIB_FILE, "@lib")?;
+            fs::write(file_name, "@lib")?;
         }
     }
 
@@ -34,11 +31,6 @@ pub fn build() -> std::io::Result<()> {
 }
 
 pub fn run() -> std::io::Result<()> {
-    if let Ok(res) = fs::exists(APP_FILE)
-        && res
-    {
-        println!("Application runned...");
-    }
-
+    println!("Application runned...");
     Ok(())
 }
