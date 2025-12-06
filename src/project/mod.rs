@@ -8,7 +8,8 @@ pub enum Target {
 }
 
 pub fn create(name: &str, target: Target) -> std::io::Result<()> {
-    let file_name = String::from(name) + ".norm";
+    fs::create_dir(name)?;
+    let file_name = String::from(name) + "/" + name + ".norm";
 
     match target {
         Target::Application => {
